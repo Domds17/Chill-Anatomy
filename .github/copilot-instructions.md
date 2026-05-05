@@ -1,0 +1,9 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Clarify Project Requirements
+- [x] Scaffold the Project (React + TypeScript + Vite)
+- [x] Customize the Project for interactive 3D anatomy viewer
+- [x] Install Required Dependencies (three, @react-three/fiber, @react-three/drei)
+- [x] Compile the Project
+- [ ] Create and Run Task (not required for this setup)
+- [ ] Launch the Project
+- [ ] Ensure Documentation is Complete
