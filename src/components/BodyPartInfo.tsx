@@ -15,6 +15,8 @@ const BodyPartInfo: React.FC = () => {
     return mainParts.includes(partId);
   };
 
+  const getParentPartId = (partId: string) => partId.includes('-') ? partId.split('-')[0] : partId;
+
   if (!selectedPart) {
     return (
       <div className="body-part-info empty">
@@ -22,6 +24,12 @@ const BodyPartInfo: React.FC = () => {
       </div>
     );
   }
+
+  const isSubpart = selectedPart.id.includes('-');
+  const parentPart = isSubpart ? cattleModel.parts.find((part) => part.id === getParentPartId(selectedPart.id)) : null;
+  const siblingSubparts = isSubpart
+    ? cattleModel.parts.filter((part) => part.id.startsWith(getParentPartId(selectedPart.id) + '-') && part.id !== selectedPart.id)
+    : [];
 
   return (
     <div className="body-part-info">
@@ -41,7 +49,27 @@ const BodyPartInfo: React.FC = () => {
         <p>{selectedPart.description}</p>
       </div>
 
-      {selectedPart.relatedParts.length > 0 && (
+      {isSubpart && parentPart && siblingSubparts.length > 0 && (
+        <div className="related-parts">
+          <h3>Subcategorias de {parentPart.name}</h3>
+          <ul>
+            {siblingSubparts.map((subpart) => (
+              <li key={subpart.id}>
+                <button
+                  className="related-part-btn"
+                  onClick={() => setSelectedPart(subpart)}
+                  style={{ borderLeftColor: subpart.color }}
+                >
+                  <span className="dot" style={{ backgroundColor: subpart.color }} />
+                  {subpart.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {selectedPart.relatedParts.length > 0 && !isSubpart && (
         <div className="related-parts">
           <h3>
             {isMainPart(selectedPart.id) ? 'Estruturas Anatômicas' : 'Detalhes'}

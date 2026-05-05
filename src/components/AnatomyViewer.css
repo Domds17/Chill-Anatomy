@@ -16,6 +16,12 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+.header-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
 .viewer-header h1 {
   color: #4a90e2;
   font-size: 28px;
@@ -23,6 +29,7 @@
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
 }
 
+.nav-button,
 .back-to-main-btn {
   background: rgba(74, 144, 226, 0.2);
   border: 1px solid rgba(74, 144, 226, 0.4);
@@ -34,7 +41,8 @@
   transition: all 0.2s ease;
 }
 
-.back-to-main-btn:hover {
+.back-to-main-btn:hover,
+.nav-button:hover {
   background: rgba(74, 144, 226, 0.3);
   border-color: rgba(74, 144, 226, 0.6);
   transform: translateY(-1px);

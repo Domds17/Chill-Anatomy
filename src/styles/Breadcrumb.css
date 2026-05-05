@@ -1,8 +1,4 @@
 .breadcrumb {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -11,9 +7,9 @@
   border: 1px solid rgba(74, 144, 226, 0.3);
   border-radius: 6px;
   backdrop-filter: blur(10px);
-  z-index: 500;
-  max-width: 90vw;
+  max-width: 100%;
   overflow-x: auto;
+  margin: 18px 20px 0;
 }
 
 .breadcrumb-item {

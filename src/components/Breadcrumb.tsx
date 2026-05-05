@@ -1,10 +1,14 @@
 import React from 'react';
-import type { AnimalPart } from '../types/animal';
 import '../styles/Breadcrumb.css';
 
+export interface BreadcrumbPart {
+  id: string;
+  name: string;
+}
+
 interface BreadcrumbProps {
-  parts: AnimalPart[];
-  onNavigate: (part: AnimalPart | null, index: number) => void;
+  parts: BreadcrumbPart[];
+  onNavigate: (part: BreadcrumbPart | null, index: number) => void;
 }
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({ parts, onNavigate }) => {
