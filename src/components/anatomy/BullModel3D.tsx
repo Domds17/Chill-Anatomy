@@ -58,15 +58,16 @@ function BullPart({ id, activePart, onSelect, children, title }: {
     >
       {React.Children.map(children, (child) => {
         if (!child || typeof child === 'string' || typeof child === 'number') return child;
-        const extraProps: any = {};
-        if ((child as any).props?.applyHighlight !== false) {
+        const element = child as React.ReactElement<{ applyHighlight?: boolean } & React.SVGProps<SVGSVGElement>>;
+        const extraProps: React.SVGProps<SVGSVGElement> = {};
+        if (element.props?.applyHighlight !== false) {
           if (isActive) {
             extraProps.filter = "url(#active-glow)";
           } else if (hovered) {
             extraProps.filter = "url(#hover-glow)";
           }
         }
-        return React.cloneElement(child as React.ReactElement, extraProps);
+        return React.cloneElement(element, extraProps);
       })}
       {title && <title>{title}</title>}
     </g>
